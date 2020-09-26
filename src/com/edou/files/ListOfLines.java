@@ -6,6 +6,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 
 /**
@@ -30,5 +31,16 @@ public class ListOfLines {
                 .filter(line -> !line.startsWith("//"))
                 .map(line -> line.substring(0, line.length()/2))
                 .forEach(System.out::println);
+        Files.readAllLines(Paths.get("src/com/edou/streams/Cheese.dat").toRealPath())
+                .stream()
+                .filter(line -> !line.startsWith("//"))
+                .map(line -> line.substring(0, line.length()/2))
+                .forEach(System.out::println);
+        Path path = Paths.get("ListOfLines.java").toAbsolutePath();
+        System.out.println(path);
+//        Path path1 = Paths.get("ListOfLines.java").toRealPath();
+//        System.out.println(path1);
+        Path path1 = Paths.get("..");
+        System.out.println(path1.toRealPath());
     }
 }
